@@ -8,3 +8,9 @@ export const createUser = {
 		password: Joi.string().min(8).required()
 	})
 }
+
+export const getUserById = {
+	params: Joi.object().keys({
+		id: Joi.string().length(24).alphanum()
+	})
+}

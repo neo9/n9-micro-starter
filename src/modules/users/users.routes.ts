@@ -1,5 +1,5 @@
 import * as validation from './users.validation'
-import { createUser } from './users.controller'
+import { createUser, getUserById } from './users.controller'
 
 export default [
 	{
@@ -7,5 +7,11 @@ export default [
 		path: '/users',
 		validate: validation.createUser,
 		handler: [ createUser ]
+	},
+	{
+		method: 'get',
+		path: '/users/:id',
+		validate: validation.getUserById,
+		handler: [ getUserById ]
 	}
 ]
