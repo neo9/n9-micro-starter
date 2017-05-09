@@ -1,6 +1,6 @@
 # node-ts-skeleton
 
-> Express.js REST API with TypeScript.
+Express.js REST API with TypeScript.
 
 ## Installation
 
