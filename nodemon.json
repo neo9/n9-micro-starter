@@ -1,0 +1,15 @@
+{
+  "ignore": [
+    ".git",
+    ".idea",
+    ".vscode",
+    "node_modules"
+  ],
+  "watch": [
+    "src/"
+  ],
+  "env": {
+    "DEBUG": "node-ts-skeleton:*"
+  },
+  "ext": "ts js json"
+}
