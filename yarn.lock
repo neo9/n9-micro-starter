@@ -66,6 +66,10 @@
     "@types/express-serve-static-core" "*"
     "@types/serve-static" "*"
 
+"@types/joi@^10.3.2":
+  version "10.3.2"
+  resolved "https://registry.yarnpkg.com/@types/joi/-/joi-10.3.2.tgz#bc4ce6577c294710663d347ebe59087f375075a5"
+
 "@types/lodash@^4.14.63":
   version "4.14.63"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.63.tgz#5ac475f55bfdc62bc88c4239dbc482f2f3bead93"
@@ -235,10 +239,6 @@ assert-plus@^0.2.0:
 async-each@^1.0.0:
   version "1.0.1"
   resolved "https://repository.neo9.pro/content/groups/global-npm/async-each/-/async-each-1.0.1.tgz#19d386a1d9edc6e7c1c85d388aedbcc56d33602d"
-
-async@^1.5.0:
-  version "1.5.2"
-  resolved "https://repository.neo9.pro/content/groups/global-npm/async/-/async-1.5.2.tgz#ec6a61ae56480c0c3cb241c95618e20892f9672a"
 
 asynckit@^0.4.0:
   version "0.4.0"
@@ -1352,6 +1352,12 @@ expand-range@^1.8.1:
   dependencies:
     fill-range "^2.1.0"
 
+express-validation@^1.0.2:
+  version "1.0.2"
+  resolved "https://repository.neo9.pro/content/groups/global-npm/express-validation/-/express-validation-1.0.2.tgz#7d589dd3b257c55b3e004665b6c69cb12cc2b142"
+  dependencies:
+    lodash "^4.9.0"
+
 express@^4.15.2:
   version "4.15.2"
   resolved "https://repository.neo9.pro/content/groups/global-npm/express/-/express-4.15.2.tgz#af107fc148504457f2dca9a6f2571d7129b97b35"
@@ -1711,6 +1717,10 @@ hoek@2.x.x:
   version "2.16.3"
   resolved "https://repository.neo9.pro/content/groups/global-npm/hoek/-/hoek-2.16.3.tgz#20bb7403d3cea398e91dc4710a8ff1b8274a25ed"
 
+hoek@4.x.x:
+  version "4.1.1"
+  resolved "https://repository.neo9.pro/content/groups/global-npm/hoek/-/hoek-4.1.1.tgz#9cc573ffba2b7b408fb5e9c2a13796be94cddce9"
+
 home-or-tmp@^2.0.0:
   version "2.0.0"
   resolved "https://repository.neo9.pro/content/groups/global-npm/home-or-tmp/-/home-or-tmp-2.0.0.tgz#e36c3f2d2cae7d746a857e38d18d5f32a7882db8"
@@ -1966,6 +1976,10 @@ isarray@1.0.0, isarray@~1.0.0:
   version "1.0.0"
   resolved "https://repository.neo9.pro/content/groups/global-npm/isarray/-/isarray-1.0.0.tgz#bb935d48582cba168c06834957a54a3e07124f11"
 
+isemail@2.x.x:
+  version "2.2.1"
+  resolved "https://repository.neo9.pro/content/groups/global-npm/isemail/-/isemail-2.2.1.tgz#0353d3d9a62951080c262c2aa0a42b8ea8e9e2a6"
+
 isexe@^2.0.0:
   version "2.0.0"
   resolved "https://repository.neo9.pro/content/groups/global-npm/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
@@ -1979,6 +1993,10 @@ isobject@^2.0.0:
 isstream@~0.1.2:
   version "0.1.2"
   resolved "https://repository.neo9.pro/content/groups/global-npm/isstream/-/isstream-0.1.2.tgz#47e63f7af55afa6f92e1500e690eb8b8529c099a"
+
+items@2.x.x:
+  version "2.1.1"
+  resolved "https://repository.neo9.pro/content/groups/global-npm/items/-/items-2.1.1.tgz#8bd16d9c83b19529de5aea321acaada78364a198"
 
 jest-diff@19.0.0, jest-diff@^19.0.0:
   version "19.0.0"
@@ -2050,6 +2068,15 @@ jodid25519@^1.0.0:
   resolved "https://repository.neo9.pro/content/groups/global-npm/jodid25519/-/jodid25519-1.0.2.tgz#06d4912255093419477d425633606e0e90782967"
   dependencies:
     jsbn "~0.1.0"
+
+joi@^10.4.1:
+  version "10.4.1"
+  resolved "https://repository.neo9.pro/content/groups/global-npm/joi/-/joi-10.4.1.tgz#a2fca1f0d603d1b843f2c1e086b52461f6be1f36"
+  dependencies:
+    hoek "4.x.x"
+    isemail "2.x.x"
+    items "2.x.x"
+    topo "2.x.x"
 
 js-tokens@^3.0.0:
   version "3.0.1"
@@ -2265,7 +2292,7 @@ lodash.restparam@^3.0.0:
   version "3.6.1"
   resolved "https://repository.neo9.pro/content/groups/global-npm/lodash.restparam/-/lodash.restparam-3.6.1.tgz#936a4e309ef330a7645ed4145986c85ae5b20805"
 
-lodash@^4.2.0:
+lodash@^4.2.0, lodash@^4.9.0:
   version "4.17.4"
   resolved "https://repository.neo9.pro/content/groups/global-npm/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
 
@@ -3200,12 +3227,6 @@ safe-buffer@^5.0.1:
   version "5.0.1"
   resolved "https://repository.neo9.pro/content/groups/global-npm/safe-buffer/-/safe-buffer-5.0.1.tgz#d263ca54696cd8a306b5ca6551e92de57918fbe7"
 
-schema-inspector@^1.6.8:
-  version "1.6.8"
-  resolved "https://repository.neo9.pro/content/groups/global-npm/schema-inspector/-/schema-inspector-1.6.8.tgz#b9e53983cc55ff2dbd7b65e3dbe085d9d1285f2a"
-  dependencies:
-    async "^1.5.0"
-
 semver-diff@^2.0.0:
   version "2.1.0"
   resolved "https://repository.neo9.pro/content/groups/global-npm/semver-diff/-/semver-diff-2.1.0.tgz#4bbb8437c8d37e4b0cf1a68fd726ec6d645d6d36"
@@ -3557,6 +3578,12 @@ to-array@0.1.4:
 to-fast-properties@^1.0.1:
   version "1.0.3"
   resolved "https://repository.neo9.pro/content/groups/global-npm/to-fast-properties/-/to-fast-properties-1.0.3.tgz#b83571fa4d8c25b82e231b06e3a3055de4ca1a47"
+
+topo@2.x.x:
+  version "2.0.2"
+  resolved "https://repository.neo9.pro/content/groups/global-npm/topo/-/topo-2.0.2.tgz#cd5615752539057c0dc0491a621c3bc6fbe1d182"
+  dependencies:
+    hoek "4.x.x"
 
 touch@1.0.0:
   version "1.0.0"

@@ -1,9 +1,10 @@
+import * as Joi from 'joi'
+
 export const createUser = {
-	type: 'object',
-	properties: {
-		firstName: { type: 'string', minLength: 2 },
-		lastName: { type: 'string', minLength: 2 },
-		email: { type: 'string', pattern: 'email' },
-		password: { type: 'string', minLength: 8 }
-	}
+	body: Joi.object().keys({
+		firstName: Joi.string().min(2).required(),
+		lastName: Joi.string().min(2).required(),
+		email: Joi.string().email().required(),
+		password: Joi.string().min(8).required()
+	})
 }

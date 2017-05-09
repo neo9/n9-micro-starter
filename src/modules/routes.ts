@@ -1,6 +1,6 @@
 import debug from 'debug'
 import { Router } from 'express'
-import { validate } from 'schema-inspector'
+import * as validate from 'express-validation'
 
 import { ExtendableError } from './utils'
 
@@ -38,7 +38,7 @@ export default (app) => {
 			// Add validation middleware validate schema defined
 			if (r.validate) {
 				if (!Array.isArray(r.handler)) r.handler = [ r.handler ]
-				r.handler.unshift(validationMiddleware(r.validate))
+				r.handler.unshift(validate(r.validate))
 			}
 			// Add route in express app, see http://expressjs.com/fr/4x/api.html#router.route
 			moduleRouter.route(r.path)[r.method](r.handler)
@@ -81,15 +81,4 @@ export default (app) => {
 		})
 	})
 
-}
-
-function validationMiddleware(schema) {
-	return (req, res, next) => {
-		const hash = { ...req.query, ...req.body, ...req.params }
-		validate(schema, hash, (err, result) => {
-			if (err) return next(err)
-			if (!result.valid) return next(new ExtendableError('Bad Request', 400, result))
-			next()
-		})
-	}
 }
