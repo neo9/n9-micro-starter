@@ -341,10 +341,6 @@ ava@^0.19.1:
     unique-temp-dir "^1.0.0"
     update-notifier "^2.1.0"
 
-awaiting@^2.2.0:
-  version "2.2.0"
-  resolved "https://repository.neo9.pro/content/groups/global-npm/awaiting/-/awaiting-2.2.0.tgz#2e8777625b272536e28f6ec435ce90a8def3310a"
-
 aws-sign2@~0.6.0:
   version "0.6.0"
   resolved "https://repository.neo9.pro/content/groups/global-npm/aws-sign2/-/aws-sign2-0.6.0.tgz#14342dd38dbcc94d0e5b87d763cd63612c0e794f"
