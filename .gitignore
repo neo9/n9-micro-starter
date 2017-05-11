@@ -17,3 +17,6 @@ coverage
 
 # Conf
 src/conf/local.ts
+
+# Logs
+*.log

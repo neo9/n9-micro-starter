@@ -1,10 +1,10 @@
-import { Db, ObjectID, FindOneOptions } from 'mongodb'
+import { Db, Collection, ObjectID, FindOneOptions } from 'mongodb'
 
 import { oid } from '../mongo'
 import { hashPassword } from './users.utils'
 
 const db: Db = global.db
-const users = db.collection('users')
+const users: Collection = db.collection('users')
 
 export async function create(user) {
 	// Hash password
@@ -27,4 +27,15 @@ export async function getByEmail(email: string) {
 
 export async function findOne(query: object, options?: FindOneOptions) {
 	return await users.findOne(query, options)
+}
+
+export async function updatebyId(userId, user) {
+	// Add/Update updateAt property
+	user.updatedAt = new Date()
+	// Find and update the user
+	await users.findOneAndUpdate(
+		{ _id: oid(userId) },
+		{ $set: user },
+		{ returnOriginal: false }
+	)
 }

@@ -1,3 +1,5 @@
+import { omit } from 'lodash'
+
 import { ExtendableError } from '../utils'
 import * as Users from './users.service'
 
@@ -14,7 +16,7 @@ export async function createUser(req, res, next) {
 	// Add user to database
 	const user = await Users.create(userBody)
 	// Send back the user created
-	res.json(user)
+	res.json(omit(user, 'password'))
 }
 
 export async function getUserById(req, res, next) {
@@ -26,5 +28,5 @@ export async function getUserById(req, res, next) {
 		return next(new ExtendableError('user-not-found', 404))
 	}
 	// Send back the user
-	res.json(user)
+	res.json(omit(user, 'password'))
 }
