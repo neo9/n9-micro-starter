@@ -1,7 +1,7 @@
 {
   "name": "node-ts-skeleton",
   "version": "1.0.0",
-  "description": "REST API with Node.js & TypeScript.",
+  "description": "Neo9 Node MicroService Skeleton",
   "private": true,
   "scripts": {
     "dev": "nodemon --exec ts-node -- src/index.ts",

@@ -11,25 +11,24 @@ import n9Mongo from './modules/mongo'
 // Load project conf & set as global
 const conf = global.conf = n9Conf({ path: join(__dirname, 'conf') })
 // Load logging system
-const log = global.log = n9Log(global.conf.name, global.conf.log)
+const log = global.log = n9Log(conf.name, global.conf.log)
 // Load loaded configuration
-log.info(`Conf loaded: ${global.conf.env}`)
+log.info(`Conf loaded: ${conf.env}`)
 
-// Profile startup boot time
-log.profile('startup')
-
-// Init method
-async function init() {
+// Start method
+export default async function start() {
+	// Profile startup boot time
+	log.profile('startup')
 	// Connect to MongoDB
-	global.db = await n9Mongo(global.conf.mongo)
+	global.db = await n9Mongo(conf.mongo)
 	// Load modules
 	const { app, server } = await n9Micro({
 		path: join(__dirname, 'modules'),
-		http: global.conf.http
+		http: conf.http
 	})
 	// Log the startup time
 	log.profile('startup')
 }
 
-// Start
-init()
+// Start only when not testing
+start()
