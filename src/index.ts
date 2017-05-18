@@ -1,45 +1,35 @@
 // Add source map supports
 import 'source-map-support/register'
+import { join } from 'path'
 
 // Dependencies
-import { join } from 'path'
-import * as glob from 'glob-promise'
+import n9Log from 'n9-node-log'
+import n9Conf from 'n9-node-conf'
+import n9Micro from 'n9-node-micro'
+import n9Mongo from './modules/mongo'
 
 // Load project conf & set as global
-import conf from './modules/conf'
-global.conf = conf
-
+const conf = global.conf = n9Conf({ path: join(__dirname, 'conf') })
 // Load logging system
-import N9Log from './modules/log'
-global.log = new N9Log(conf.name)
+const log = global.log = n9Log(global.conf.name, global.conf.log)
+// Load loaded configuration
+log.info(`Conf loaded: ${global.conf.env}`)
 
+// Profile startup boot time
 log.profile('startup')
 
-// Provides a stack trace for unhandled rejections instead of the default message string.
-process.on('unhandledRejection', (err) => {
-	throw err
-})
-
-// Load modules
-import './modules/newrelic'
-import { app, server, listen } from './modules/http'
-import { connect } from './modules/mongo'
-import IOServer from './modules/io'
-import routes from './modules/routes'
-
-// Start
-(async () => {
-	// IO Server
-	const io = IOServer(server)
+// Init method
+async function init() {
 	// Connect to MongoDB
-	await connect()
-	// Init modules
-	const initFiles = await glob('**/*.init.+(ts|js)', { cwd: __dirname })
-	await Promise.all(initFiles.map((file) => require(join(__dirname, file)).default()))
-	// Add routes
-	await routes(app)
-	// Start the server
-	await listen()
+	global.db = await n9Mongo(global.conf.mongo)
+	// Load modules
+	const { app, server } = await n9Micro({
+		path: join(__dirname, 'modules'),
+		http: global.conf.http
+	})
 	// Log the startup time
 	log.profile('startup')
-})()
+}
+
+// Start
+init()

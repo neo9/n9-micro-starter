@@ -1,7 +1,6 @@
 import * as jwt from 'jsonwebtoken'
-import * as expressJWT from 'express-jwt'
+import { N9Error } from 'n9-node-utils'
 
-import { ExtendableError } from '../utils'
 import { getFromHeaderOrQuery, generateAccessToken } from './sessions.utils'
 
 // Users module dependency
@@ -24,7 +23,7 @@ export async function refresh(session) {
 	// Check if userId exists
 	const user = await Users.getById(session.userId)
 	if (!user) {
-		throw new ExtendableError('user-not-connected', 401)
+		throw new N9Error('user-not-connected', 401)
 	}
 	return await create(user)
 }

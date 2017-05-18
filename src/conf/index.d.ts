@@ -1,22 +1,15 @@
-interface Conf {
-	http?: {
-		port: number
-	}
-	log?: {
-		level: 'info' | 'warn' | 'error'
-		http: 'dev' | 'common' | 'combined' | 'short' | 'tiny'
-	}
+import { N9Log } from 'n9-node-log'
+import { N9Micro } from 'n9-node-micro'
+
+export interface Conf {
+	http?: N9Micro.HttpOptions
+	log?: N9Log.Options
 	mongo?: {
 		url: string
 	}
 	io?: {
 		enabled: boolean
 	}
-	newRelic?: {
-		enabled: boolean
-		licenseKey?: string
-		filepath?: string
-	},
 	jwt?: {
 		secret: string,
 		expiresIn: string | number

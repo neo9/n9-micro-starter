@@ -1,4 +1,4 @@
-import { ExtendableError } from '../utils'
+import { N9Error } from 'n9-node-utils'
 import * as Sessions from './sessions.service'
 
 // Users module dependency
@@ -11,12 +11,12 @@ export async function createSession(req, res, next) {
 
 	const user = await Users.getByEmail(email)
 	if (!user) {
-		return next(new ExtendableError('invalid-credentials', 401))
+		return next(new N9Error('invalid-credentials', 401))
 	}
 	// Check if password matches
 	const match = await verifyPassword(user.password, password)
 	if (!match) {
-		return next(new ExtendableError('invalid-credentials', 401))
+		return next(new N9Error('invalid-credentials', 401))
 	}
 	// Update user lastSessionDate
 	await Users.updatebyId(user._id, { lastSessionAt: new Date() })
