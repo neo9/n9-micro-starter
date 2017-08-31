@@ -39,4 +39,10 @@ async function start() {
 	return { server, db, conf }
 }
 
-export default start()
+// Start server if not in test mode
+/* istanbul ignore if */
+if (conf.env !== 'test') {
+	start()
+}
+
+export default start

@@ -1,35 +1,18 @@
 import test from 'ava'
 
 // NPM modules
-import * as stdMocks from 'std-mocks'
-import { cb, waitFor, waitForEvent } from '@neo9/n9-node-utils'
-import { Db, Collection, ObjectID } from 'mongodb'
+import { cb } from '@neo9/n9-node-utils'
 
 /*
 ** Helpers
 */
-import { context, get, post, put, del } from './fixtures/helpers'
+import { startAPI, context, get, post, put, del } from './fixtures/helpers'
 
 /*
 ** Start API
 */
-test.before('Start server', async (t) => {
-	stdMocks.use()
-	// Set env to 'test'
-	process.env.NODE_ENV = 'test'
-	// Require server
-	const { server, db, conf } = await require('../src').default
-	// Drop collections
-	await db.dropDatabase()
-	// Re-create indexes
-	await db.collection('users').createIndex({ email: 1, username: 1 }, { unique: true })
-	// Add variables to context
-	context.server = server
-	context.db = db
-	context.conf = conf
-	// Flush logs output
-	stdMocks.flush()
-	stdMocks.restore()
+test.before('Start API', async (t) => {
+	await startAPI()
 })
 
 /*
