@@ -3,7 +3,7 @@ import { Conf } from './index.d'
 const conf: Conf = {
 	http: {
 		port: 6686,
-		logLevel: 'dev'
+		logLevel: 'dev' // log format for morgan
 	}
 }
 

@@ -1,12 +1,12 @@
-# node-ts-skeleton
+# n9-micro-starter
 
-Express.js REST API with TypeScript.
+REST API with TypeScript & [n9-node-micro](https://github.com/neo9/n9-node-micro)
 
 ## Installation
 
 ```bash
-git clone ssh://git@scm.bytefactory.fr:2222/n9node/node-ts-skeleton.git
-cd node-ts-skeleton/
+git clone --depth 1 git@github.com:neo9/n9-micro-starter.git
+cd n9-micro-starter/
 yarn
 ```
 
@@ -22,11 +22,11 @@ git init
 npm run dev
 ```
 
-Server will listen on port 6686 (configurable via `src/conf/application.ts`) and will restart on changes.
+Server will listen on port `6686` (configurable via `src/conf/application.ts`) and will restart on changes.
 
-### Debug
+### Logs
 
-The log are displayed via `DEBUG=node-ts-skeleton:*` defined in `nodemon.json`, please rename it if you rename your application name (`package.json`).
+To configure the logs, use `log` option in your config file, see [n9-node-log](https://github.com/neo9/n9-node-log#log-level) to see the available options.
 
 ## Production
 

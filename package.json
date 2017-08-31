@@ -1,42 +1,50 @@
 {
-  "name": "node-ts-skeleton",
+  "name": "n9-micro-starter",
   "version": "1.0.0",
   "description": "Neo9 Node MicroService Skeleton",
   "private": true,
   "scripts": {
     "dev": "nodemon --exec ts-node -- src/index.ts",
-    "build": "rimraf dist/ && tsc && copyfiles package.json dist/",
-    "start": "node dist/src/",
-    "lint": "tslint src/*.ts src/modules/*.ts src/modules/**/*.ts",
-    "test": "npm run lint && npm run build && ava --verbose dist/test/",
+    "build": "rimraf dist/ && tsc && copyfiles -a package.json './node_modules/**' dist/",
+    "build-test": "rimraf dist/ && tsc --project tsconfig.test.json && copyfiles package.json test/fixtures/* dist/",
+    "start": "node dist/",
+    "lint": "tslint src/*.ts src/modules/*.ts src/modules/**/*.ts src/modules/**/**/*.ts",
+    "test": "npm run lint && npm run build-test && nyc ava --verbose --serial dist/test/ && nyc report --reporter=html",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "postinstall": "./bin/setup-git-hooks && npm run build"
   },
+  "nyc": {
+    "include": [
+      "dist/src/"
+    ]
+  },
   "dependencies": {
-    "bcrypt": "^1.0.2",
-    "express-validation": "^1.0.2",
-    "fqdn": "^0.0.3",
-    "helmet": "^3.6.0",
-    "joi": "^10.4.2",
-    "jsonwebtoken": "^7.4.1",
-    "mongodb": "^2.2.26",
-    "n9-node-conf": "^1.0.3",
-    "n9-node-log": "^2.0.0",
-    "n9-node-micro": "^1.0.2",
-    "n9-node-utils": "^1.0.1",
-    "source-map-support": "^0.4.15"
+    "@neo9/n9-node-conf": "^1.0.6",
+    "@neo9/n9-node-log": "^2.3.1",
+    "@neo9/n9-node-micro": "^4.3.0",
+    "@neo9/n9-node-utils": "^1.5.0",
+    "bcrypt": "^1.0.3",
+    "joi": "^10.6.0",
+    "mongodb": "^2.2.31",
+    "source-map-support": "^0.4.16"
   },
   "devDependencies": {
     "@types/bcrypt": "^1.0.0",
-    "@types/joi": "^10.3.2",
-    "@types/lodash": "^4.14.64",
-    "@types/mongodb": "^2.2.2",
-    "@types/node": "^7.0.18",
-    "ava": "^0.19.1",
+    "@types/joi": "^10.4.1",
+    "@types/lodash": "^4.14.74",
+    "@types/mongodb": "^2.2.11",
+    "@types/node": "^8.0.26",
+    "ava": "^0.22.0",
+    "codecov": "^2.3.0",
     "copyfiles": "^1.2.0",
     "nodemon": "^1.11.0",
+    "nyc": "^11.1.0",
+    "request": "^2.81.0",
+    "request-promise-native": "^1.0.4",
     "rimraf": "^2.6.1",
-    "ts-node": "^3.0.4",
-    "tslint": "^5.2.0",
-    "typescript": "^2.3.2"
+    "std-mocks": "^1.0.1",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.7.0",
+    "typescript": "^2.4.2"
   }
 }
