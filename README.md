@@ -2,6 +2,9 @@
 
 REST API with TypeScript & [n9-node-micro](https://github.com/neo9/n9-node-micro)
 
+[![Travis](https://img.shields.io/travis/neo9/n9-micro-starter/master.svg)](https://travis-ci.org/neo9/n9-micro-starter)
+[![Coverage](https://img.shields.io/codecov/c/github/neo9/n9-micro-starter/master.svg)](https://codecov.io/gh/neo9/n9-micro-starter)
+
 ## Installation
 
 ```bash
