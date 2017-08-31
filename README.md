@@ -10,7 +10,7 @@ REST API with TypeScript & [n9-node-micro](https://github.com/neo9/n9-node-micro
 ```bash
 git clone --depth 1 git@github.com:neo9/n9-micro-starter.git
 cd n9-micro-starter/
-yarn
+npm install
 ```
 
 You need also to remove the git history and start a new one:
