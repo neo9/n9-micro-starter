@@ -38,7 +38,7 @@ npm run build
 npm start
 ```
 
-The build output is configurable via `tsconfig.json`, default output to ES2015 to work on `node >= 4`.
+The build output is configurable via `tsconfig.json`, default output to ES2015 to work on `node >= 6`.
 
 ## Linting
 
