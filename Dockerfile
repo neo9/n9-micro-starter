@@ -6,8 +6,6 @@ RUN npm install
 COPY ./ ./
 RUN npm run build
 
-USER nobody
-
 ENV PORT 8080
 
 CMD ["node", "dist/index.js"]
