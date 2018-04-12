@@ -25,14 +25,14 @@
     "@neo9/n9-node-utils": "^1.5.0",
     "bcrypt": "^1.0.3",
     "joi": "^10.6.0",
-    "mongodb": "^2.2.31",
+    "mongodb": "^3.0.6",
     "source-map-support": "^0.4.16"
   },
   "devDependencies": {
     "@types/bcrypt": "^1.0.0",
     "@types/joi": "^10.4.1",
     "@types/lodash": "^4.14.74",
-    "@types/mongodb": "^2.2.11",
+    "@types/mongodb": "^3.0.12",
     "@types/node": "^8.0.26",
     "ava": "^0.22.0",
     "codecov": "^2.3.0",

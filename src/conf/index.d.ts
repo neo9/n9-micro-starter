@@ -11,7 +11,8 @@ export interface Conf {
 	version?: string
 	// Custom config
 	mongo?: {
-		url: string
+		url: string,
+		dbName: string
 	}
 	io?: {
 		enabled: boolean
