@@ -11,7 +11,7 @@
     "lint": "tslint src/*.ts src/modules/*.ts src/modules/**/*.ts src/modules/**/**/*.ts",
     "test": "npm run lint && npm run build-test && nyc ava --verbose --serial dist/test/ && nyc report --reporter=html",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
-    "postinstall": "./bin/setup-git-hooks && npm run build"
+    "postinstall": "(./bin/setup-git-hooks && npm run build) || echo 'Not a git repository'"
   },
   "nyc": {
     "include": [
