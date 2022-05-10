@@ -1,3 +1,4 @@
+# No longer actively maintained
 # n9-micro-starter
 
 REST API with TypeScript & [n9-node-micro](https://github.com/neo9/n9-node-micro)
